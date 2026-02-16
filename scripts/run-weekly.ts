@@ -1,12 +1,14 @@
 import "dotenv/config";
 import { runWeekly } from "../src/orchestration/runWeekly";
+import { createLogger } from "../src/utils/logger";
+
+const logger = createLogger("scripts:run-weekly");
 
 runWeekly()
   .then((page) => {
-    // Notion returns a URL in some clients; otherwise just log the id.
-    console.log("Created Notion page:", (page as any).id);
+    logger.info("Created Notion page", { pageId: page.id });
   })
   .catch((err) => {
-    console.error(err);
+    logger.error("Weekly run failed", { error: err });
     process.exit(1);
   });
