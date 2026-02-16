@@ -22,3 +22,6 @@
 
 # vscode
 .vscode/
+
+# build
+/dist
