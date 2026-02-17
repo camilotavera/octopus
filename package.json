@@ -5,8 +5,10 @@
   "main": "dist/src/orchestration/runWeekly.js",
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "lint": "biome check .",
-    "lint:fix": "biome check --write .",
+    "check": "biome check .",
+    "check:unsafe": "biome check --write --unsafe .",
+    "check:write": "biome check --write .",
+    "check:ci": "biome ci .",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "weekly": "npm run build && node dist/scripts/run-weekly.js"
   },
