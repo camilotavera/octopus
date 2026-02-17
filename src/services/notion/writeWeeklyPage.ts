@@ -75,7 +75,7 @@ export async function writeNotionWeeklyPage(args: {
   });
 
   // For now limiting children to max 100 as, The Notion API has a size limit of 100 elements for any array of block types,
-  // including the children array. 
+  // including the children array.
   if (children.length > 100) {
     logger.info('Children greater than 100, batching...');
     const page = await notion.pages.create({
@@ -91,8 +91,8 @@ export async function writeNotionWeeklyPage(args: {
       logger.info('Append 10 children batch...');
       await notion.blocks.children.append({
         block_id: page.id,
-        children: children.splice(0, 10)
-      })
+        children: children.splice(0, 10),
+      });
     }
 
     logger.info('Finished batching...');

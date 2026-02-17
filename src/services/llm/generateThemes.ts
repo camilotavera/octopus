@@ -1,6 +1,6 @@
-import { createOpenAI } from "./client";
-import { buildWeeklyPrompt } from "./prompts";
-import { RankedTopic, ThemeSuggestion } from "../../domain/types";
+import type { RankedTopic, ThemeSuggestion } from '../../domain/types';
+import { createOpenAI } from './client';
+import { buildWeeklyPrompt } from './prompts';
 
 export async function generateWeeklyThemes(args: {
   rankedTopics: RankedTopic[];
@@ -11,15 +11,15 @@ export async function generateWeeklyThemes(args: {
 
   const res = await openai.chat.completions.create({
     // Swap model based on your preference/cost:
-    model: process.env.OPENAI_MODEL || "gpt-4.1",
+    model: process.env.OPENAI_MODEL || 'gpt-4.1',
     messages: [
-      { role: "system", content: "Return JSON only. No markdown." },
-      { role: "user", content: prompt },
+      { role: 'system', content: 'Return JSON only. No markdown.' },
+      { role: 'user', content: prompt },
     ],
     temperature: 0.7,
   });
 
-  const text = res.choices[0]?.message?.content?.trim() || "";
+  const text = res.choices[0]?.message?.content?.trim() || '';
   let parsed: any;
   try {
     parsed = JSON.parse(text);
@@ -30,8 +30,8 @@ export async function generateWeeklyThemes(args: {
     parsed = JSON.parse(match[0]);
   }
 
-  if (!parsed?.suggestions?.length || parsed.suggestions.length !== 10) {
-    throw new Error(`Expected 10 suggestions, got ${parsed?.suggestions?.length ?? 0}`);
+  if (!parsed?.suggestions?.length || parsed.suggestions.length < 5) {
+    throw new Error(`Expected Min 5 suggestions, got ${parsed?.suggestions?.length ?? 0}`);
   }
 
   return parsed.suggestions as ThemeSuggestion[];
