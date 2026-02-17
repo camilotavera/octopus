@@ -1,66 +1,65 @@
 {
-    "$schema": "https://biomejs.dev/schemas/2.3.0/schema.json",
-    "vcs": {
-      "enabled": true,
-      "clientKind": "git",
-      "useIgnoreFile": true
-    },
-    "files": {
-      "ignoreUnknown": false,
-      "includes": ["**/*.{js,jsx,ts,tsx,json}"]
-    },
+  "$schema": "https://biomejs.dev/schemas/2.3.0/schema.json",
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "files": {
+    "ignoreUnknown": false,
+    "includes": ["**/*.{js,jsx,ts,tsx,json}"]
+  },
+  "formatter": {
+    "enabled": true,
+    "useEditorconfig": true,
+    "indentStyle": "space",
+    "lineWidth": 120
+  },
+  "javascript": {
     "formatter": {
-      "enabled": true,
-      "useEditorconfig": true,
-      "indentStyle": "space",
-      "lineWidth": 120
-    },
-    "javascript": {
-      "formatter": {
-        "jsxQuoteStyle": "single",
-        "lineWidth": 120,
-        "quoteStyle": "single"
-      }
-    },
-    "css": {
-      "parser": {
-        "tailwindDirectives": true
-      }
-    },
-    "assist": { "actions": { "source": { "organizeImports": "on" } } },
-    "linter": {
-      "enabled": true,
-      "rules": {
-        "correctness": {
-          "noUndeclaredDependencies": "error"
-        },
-        "nursery": {
-          "useSortedClasses": {
-            "level": "warn",
-            "fix": "safe",
-            "options": {
-              "functions": ["clsx", "cva", "cn"]
-            }
+      "jsxQuoteStyle": "single",
+      "lineWidth": 120,
+      "quoteStyle": "single"
+    }
+  },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
+  },
+  "assist": { "actions": { "source": { "organizeImports": "on" } } },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "correctness": {
+        "noUndeclaredDependencies": "error"
+      },
+      "nursery": {
+        "useSortedClasses": {
+          "level": "warn",
+          "fix": "safe",
+          "options": {
+            "functions": ["clsx", "cva", "cn"]
           }
-        },
-        "recommended": true,
-        "security": {
-          "noDangerouslySetInnerHtml": "off"
-        },
-        "style": {
-          "noParameterAssign": "error",
-          "useAsConstAssertion": "error",
-          "useDefaultParameterLast": "error",
-          "useEnumInitializers": "error",
-          "useSelfClosingElements": "error",
-          "useSingleVarDeclarator": "error",
-          "noUnusedTemplateLiteral": "error",
-          "useNumberNamespace": "error",
-          "noInferrableTypes": "error",
-          "noNonNullAssertion": "off",
-          "noUselessElse": "error"
         }
+      },
+      "recommended": true,
+      "security": {
+        "noDangerouslySetInnerHtml": "off"
+      },
+      "style": {
+        "noParameterAssign": "error",
+        "useAsConstAssertion": "error",
+        "useDefaultParameterLast": "error",
+        "useEnumInitializers": "error",
+        "useSelfClosingElements": "error",
+        "useSingleVarDeclarator": "error",
+        "noUnusedTemplateLiteral": "error",
+        "useNumberNamespace": "error",
+        "noInferrableTypes": "error",
+        "noNonNullAssertion": "off",
+        "noUselessElse": "error"
       }
     }
   }
-  
+}

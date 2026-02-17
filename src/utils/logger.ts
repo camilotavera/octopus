@@ -1,4 +1,4 @@
-type LogLevel = "debug" | "info" | "warn" | "error";
+type LogLevel = 'debug' | 'info' | 'warn' | 'error';
 
 type LogMeta = Record<string, unknown>;
 
@@ -19,10 +19,10 @@ const LEVEL_WEIGHT: Record<LogLevel, number> = {
 
 function parseLogLevel(raw: string | undefined): LogLevel {
   const level = raw?.toLowerCase();
-  if (level === "debug" || level === "info" || level === "warn" || level === "error") {
+  if (level === 'debug' || level === 'info' || level === 'warn' || level === 'error') {
     return level;
   }
-  return "info";
+  return 'info';
 }
 
 function normalizeMeta(meta: LogMeta | undefined): LogMeta | undefined {
@@ -63,7 +63,7 @@ export function createLogger(scope: string): Logger {
     };
 
     const line = JSON.stringify(payload);
-    if (level === "warn" || level === "error") {
+    if (level === 'warn' || level === 'error') {
       console.error(line);
       return;
     }
@@ -72,10 +72,10 @@ export function createLogger(scope: string): Logger {
   }
 
   return {
-    debug: (message, meta) => write("debug", message, meta),
-    info: (message, meta) => write("info", message, meta),
-    warn: (message, meta) => write("warn", message, meta),
-    error: (message, meta) => write("error", message, meta),
+    debug: (message, meta) => write('debug', message, meta),
+    info: (message, meta) => write('info', message, meta),
+    warn: (message, meta) => write('warn', message, meta),
+    error: (message, meta) => write('error', message, meta),
     child: (childScope) => createLogger(`${scope}:${childScope}`),
   };
 }

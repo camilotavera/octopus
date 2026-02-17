@@ -1,5 +1,5 @@
-import { PILLARS } from "../config/pillars";
-import { Topic, RankedTopic } from "./types";
+import { PILLARS } from '../config/pillars';
+import type { RankedTopic, Topic } from './types';
 
 function keywordScore(text: string, keywords: string[]) {
   const t = text.toLowerCase();

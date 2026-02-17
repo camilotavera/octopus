@@ -1,25 +1,23 @@
-import { PILLARS } from "../../config/pillars";
-import { RankedTopic } from "../../domain/types";
+import { PILLARS } from '../../config/pillars';
+import type { RankedTopic } from '../../domain/types';
 
-export function buildWeeklyPrompt(args: {
-  rankedTopics: RankedTopic[];
-  weekLabel: string;
-}) {
+export function buildWeeklyPrompt(args: { rankedTopics: RankedTopic[]; weekLabel: string }) {
   const { rankedTopics, weekLabel } = args;
 
-  const pillarsText = PILLARS.map(
-    (p) => `- ${p.id}: ${p.name} — ${p.description}`
-  ).join("\n");
+  const pillarsText = PILLARS.map((p) => `- ${p.id}: ${p.name} — ${p.description}`).join('\n');
 
-  const topicsText = rankedTopics.slice(0, 30).map((t, i) => {
-    const sources = t.sources
-      .slice(0, 4)
-      .map((s) => `${s.source}${s.url ? ` (${s.url})` : ""}`)
-      .join(", ");
-    return `${i + 1}. ${t.title}\n   score=${t.score} pillarMatches=${t.pillarMatches
-      .map((m) => `${m.pillarId}:${m.score}`)
-      .join(", ")}\n   sources=${sources}`;
-  }).join("\n");
+  const topicsText = rankedTopics
+    .slice(0, 30)
+    .map((t, i) => {
+      const sources = t.sources
+        .slice(0, 4)
+        .map((s) => `${s.source}${s.url ? ` (${s.url})` : ''}`)
+        .join(', ');
+      return `${i + 1}. ${t.title}\n   score=${t.score} pillarMatches=${t.pillarMatches
+        .map((m) => `${m.pillarId}:${m.score}`)
+        .join(', ')}\n   sources=${sources}`;
+    })
+    .join('\n');
 
   return `
 You are Camilo: a Staff-level full-stack engineer (Next.js/TypeScript), strong in SEO/AEO + analytics, building AI agent products.

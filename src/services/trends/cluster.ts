@@ -1,5 +1,5 @@
-import { TrendItem, Topic } from "../../domain/types";
-import { normalizeTitle } from "./normalize";
+import type { Topic, TrendItem } from '../../domain/types';
+import { normalizeTitle } from './normalize';
 
 /**
  * MVP clustering: group by normalized title (exact).
@@ -17,11 +17,11 @@ export function clusterToTopics(items: TrendItem[]): Topic[] {
         title: it.title,
         url: it.url,
         sources: [it],
-        signals: [`${it.source}${it.rawScore ? ` score=${it.rawScore}` : ""}`],
+        signals: [`${it.source}${it.rawScore ? ` score=${it.rawScore}` : ''}`],
       });
     } else {
       existing.sources.push(it);
-      existing.signals.push(`${it.source}${it.rawScore ? ` score=${it.rawScore}` : ""}`);
+      existing.signals.push(`${it.source}${it.rawScore ? ` score=${it.rawScore}` : ''}`);
       // Prefer a URL if missing
       if (!existing.url && it.url) existing.url = it.url;
     }

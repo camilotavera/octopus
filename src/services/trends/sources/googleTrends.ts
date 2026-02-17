@@ -1,4 +1,4 @@
-import { TrendItem } from "../../../domain/types";
+import type { TrendItem } from '../../../domain/types';
 
 /**
  * Provider interface so you can swap implementations:
@@ -16,12 +16,12 @@ export const DummyGoogleTrendsProvider: GoogleTrendsProvider = {
     return [
       {
         id: `gt-dummy-${geo}-1`,
-        source: "googletrends",
-        title: "Placeholder: connect a trends provider (SerpApi/DataForSEO/unofficial lib)",
+        source: 'googletrends',
+        title: 'Placeholder: connect a trends provider (SerpApi/DataForSEO/unofficial lib)',
         url: undefined,
         publishedAt: new Date().toISOString(),
         rawScore: 1,
-        tags: ["placeholder"],
+        tags: ['placeholder'],
       },
     ];
   },

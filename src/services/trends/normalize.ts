@@ -1,10 +1,10 @@
-import { TrendItem } from "../../domain/types";
+import type { TrendItem } from '../../domain/types';
 
 export function normalizeTitle(s: string) {
   return s
     .toLowerCase()
-    .replace(/[\[\]\(\)\{\}\.\,\!\?\:;'"“”‘’]/g, "")
-    .replace(/\s+/g, " ")
+    .replace(/[[\](){}.,!?:;'"“”‘’]/g, '')
+    .replace(/\s+/g, ' ')
     .trim();
 }
 
