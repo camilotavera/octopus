@@ -3,248 +3,173 @@ export type Pillar = {
   name: string;
   description: string;
   keywords: string[];
+  contentWeight: 'core' | 'supporting' | 'personal';
 };
 
-/**
- * Expanded pillar system.
- *
- * Strategy:
- * - Core technical authority
- * - Staff-level systems thinking
- * - AI-native architecture
- * - Career leverage & immigration
- * - Founder/startup realism
- * - Engineering communication
- *
- * These are used in:
- * - Topic ranking (keyword scoring)
- * - LLM context
- * - Notion labeling
- */
-
 export const PILLARS: Pillar[] = [
-  // =============================
-  // AI & Automation
-  // =============================
   {
-    id: 'ai-agents',
-    name: 'AI Agents & Automation Systems',
+    id: 'ai-native-product-engineering',
+    name: 'AI-Native Product Engineering',
     description:
-      'Designing and shipping practical AI agents, cron-to-agent architectures, evaluation systems, tool orchestration, and reliability patterns in production.',
+      'Practical AI systems for real products: agents, automation, human-in-the-loop workflows, evals, cost, latency, reliability, and product UX.',
+    contentWeight: 'core',
     keywords: [
-      'agent',
+      'ai',
+      'ai agents',
       'automation',
-      'workflow',
-      'orchestration',
       'llm',
-      'evaluation',
       'evals',
-      'tooling',
-      'agentic',
-      'autonomous',
+      'tool orchestration',
+      'human in the loop',
       'ai workflow',
-    ],
-  },
-  {
-    id: 'ai-native-architecture',
-    name: 'AI-Native Product Architecture',
-    description:
-      'Building AI-first systems, latency vs intelligence tradeoffs, human-in-the-loop workflows, cost modeling, and inference architecture decisions.',
-    keywords: [
-      'ai-first',
       'inference',
-      'model',
-      'prompt',
       'latency',
       'token cost',
-      'context window',
-      'ai architecture',
-      'vector',
-      'embedding',
+      'ai reliability',
     ],
   },
-
-  // =============================
-  // SEO & Visibility
-  // =============================
   {
-    id: 'seo-aeo',
-    name: 'SEO & AEO Engineering',
+    id: 'search-visibility-engineering',
+    name: 'Search Visibility Engineering: SEO, AEO & GEO',
     description:
-      'Technical SEO, schema strategy, crawl efficiency, structured data at scale, and AI search visibility systems.',
+      'Engineering systems that make products discoverable across Google, AI search, LLM answers, structured data, programmatic SEO, and entity-based content.',
+    contentWeight: 'core',
     keywords: [
       'seo',
       'aeo',
+      'geo',
+      'ai search',
       'schema',
       'structured data',
-      'crawl',
+      'crawlability',
       'indexing',
-      'serp',
-      'search',
       'programmatic seo',
-      'content system',
-    ],
-  },
-  {
-    id: 'ai-seo-intersection',
-    name: 'AI + SEO + Analytics Intersection',
-    description:
-      'Where AI systems, structured content, analytics, and search visibility meet. Entity modeling, retrieval, and AI-driven discoverability.',
-    keywords: [
-      'entity',
-      'retrieval',
-      'structured content',
-      'chunking',
-      'llm search',
-      'ai search',
+      'entity optimization',
       'content architecture',
       'search visibility',
-      'knowledge graph',
     ],
   },
-
-  // =============================
-  // Web Architecture
-  // =============================
   {
-    id: 'nextjs-architecture',
-    name: 'Next.js & Modern Web Architecture',
+    id: 'marketplace-engineering-pricing',
+    name: 'Marketplace Engineering & Pricing Systems',
     description:
-      'Server Components, hydration tradeoffs, caching layers, edge vs server, DTO patterns, performance engineering, and modern web architecture decisions.',
+      'Designing marketplace systems for liquidity, supply growth, pricing, booking integrity, trust, payments, attribution, and operational reliability.',
+    contentWeight: 'core',
     keywords: [
-      'next.js',
-      'app router',
-      'server components',
-      'rsc',
-      'hydration',
-      'lcp',
-      'inp',
-      'performance',
-      'cache',
-      'edge',
-      'dto',
-    ],
-  },
-
-  // =============================
-  // Data & Observability
-  // =============================
-  {
-    id: 'analytics-observability',
-    name: 'Analytics & Observability Systems',
-    description:
-      'Event taxonomy design, Snowplow vs GA4 tradeoffs, BigQuery pipelines, RUM monitoring, and debugging data integrity in distributed systems.',
-    keywords: [
-      'ga4',
-      'snowplow',
-      'bigquery',
-      'events',
-      'analytics',
-      'tracking',
-      'rum',
-      'datadog',
-      'instrumentation',
+      'marketplace',
+      'liquidity',
+      'supply growth',
+      'dynamic pricing',
+      'pricing engine',
+      'booking',
+      'payments',
+      'trust',
+      'two-sided marketplace',
+      'local marketplace',
+      'conversion',
       'attribution',
     ],
   },
-
-  // =============================
-  // System Design & Scale
-  // =============================
   {
-    id: 'system-design',
-    name: 'System Design for Scale',
+    id: 'pragmatic-startup-architecture',
+    name: 'Pragmatic Startup Architecture',
     description:
-      'Database modeling, read vs write optimization, caching strategies, location hierarchies, API architecture, and scaling to millions of records.',
+      'Early-stage architecture decisions: modular monoliths, Postgres-first systems, workers, API contracts, reliability, infrastructure tradeoffs, and avoiding premature complexity.',
+    contentWeight: 'core',
     keywords: [
+      'startup architecture',
+      'modular monolith',
+      'postgres',
+      'workers',
       'system design',
-      'database',
-      'schema',
-      'scaling',
+      'api contracts',
+      'reliability',
+      'state machines',
+      'webhooks',
+      'infrastructure',
+      'technical tradeoffs',
+      'overengineering',
+    ],
+  },
+  {
+    id: 'modern-web-performance-architecture',
+    name: 'Modern Web Performance & Frontend Architecture',
+    description:
+      'Next.js, React, server rendering, RSC, caching, hydration, payload hygiene, Core Web Vitals, frontend observability, and SEO-performance tradeoffs.',
+    contentWeight: 'supporting',
+    keywords: [
+      'next.js',
+      'react',
+      'server components',
+      'rsc',
+      'hydration',
+      'ssr',
       'caching',
-      'read optimization',
-      'write optimization',
-      'architecture',
-      'distributed',
+      'core web vitals',
+      'lcp',
+      'inp',
+      'dto',
+      'frontend performance',
     ],
   },
-
-  // =============================
-  // Growth & Experimentation
-  // =============================
   {
-    id: 'growth-engineering',
-    name: 'Growth & Experimentation Engineering',
+    id: 'analytics-observability-product-truth',
+    name: 'Analytics, Observability & Product Truth',
     description:
-      'A/B testing at scale, experiment design, instrumentation-first features, growth loops, and metrics interpretation.',
+      'Instrumentation, event taxonomy, attribution, experimentation, RUM, data quality, and using metrics to make better product decisions.',
+    contentWeight: 'supporting',
     keywords: [
-      'ab test',
-      'experiment',
-      'hypothesis',
-      'growth',
-      'conversion',
-      'metrics',
-      'funnel',
-      'feature flag',
-      'optimization',
-    ],
-  },
-
-  // =============================
-  // Startup & Founder Reality
-  // =============================
-  {
-    id: 'startup-engineering',
-    name: 'Startup Engineering Reality',
-    description:
-      'Early-stage engineering tradeoffs, equity math, product-market risk, hiring first engineers, and infrastructure from zero.',
-    keywords: ['startup', 'equity', 'founder', 'seed', 'early stage', 'mvp', 'product market fit', 'team building'],
-  },
-
-  // =============================
-  // Career & Immigration
-  // =============================
-  {
-    id: 'career-strategy',
-    name: 'Career Strategy for Senior Engineers',
-    description:
-      'Positioning for Staff roles, technical storytelling, interview strategy, recruiter dynamics, and building leverage.',
-    keywords: [
-      'staff engineer',
-      'senior engineer',
-      'career',
-      'interview',
-      'recruiter',
-      'leadership',
-      'promotion',
-      'positioning',
+      'analytics',
+      'observability',
+      'event taxonomy',
+      'instrumentation',
+      'attribution',
+      'experimentation',
+      'ab testing',
+      'posthog',
+      'ga4',
+      'snowplow',
+      'bigquery',
+      'datadog',
+      'rum',
     ],
   },
   {
-    id: 'immigration-strategy',
-    name: 'Immigration Strategy for Builders',
-    description:
-      'O-1, H-1B, Canada pathways, sponsorship tradeoffs, contractor leverage, and pragmatic relocation strategies for engineers.',
-    keywords: ['visa', 'immigration', 'o-1', 'h-1b', 'canada', 'sponsorship', 'relocation', 'work permit'],
-  },
-
-  // =============================
-  // Engineering Communication
-  // =============================
-  {
-    id: 'engineering-communication',
+    id: 'engineering-communication-influence',
     name: 'Engineering Communication & Influence',
     description:
-      'RFC writing, design docs, async communication, storytelling in interviews, and influencing cross-functional teams.',
+      'How senior engineers create alignment through RFCs, design docs, technical storytelling, stakeholder communication, and decision-making.',
+    contentWeight: 'personal',
     keywords: [
+      'engineering communication',
       'rfc',
-      'design doc',
-      'documentation',
-      'async',
-      'communication',
+      'design docs',
+      'technical storytelling',
+      'stakeholder alignment',
       'influence',
-      'stakeholders',
-      'alignment',
+      'leadership',
+      'async communication',
+      'decision making',
+    ],
+  },
+  {
+    id: 'global-builder-journey',
+    name: 'Global Builder Journey',
+    description:
+      'Lessons from building a senior engineering career from Colombia into U.S. startups: positioning, interviews, O-1 preparation, public credibility, communication, and leverage.',
+    contentWeight: 'personal',
+    keywords: [
+      'career',
+      'senior engineer',
+      'staff engineer',
+      'immigration',
+      'o-1 visa',
+      'relocation',
+      'latin america',
+      'public writing',
+      'technical credibility',
+      'interviews',
+      'positioning',
     ],
   },
 ];

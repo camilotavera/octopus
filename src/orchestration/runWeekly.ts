@@ -3,6 +3,7 @@ import { generateWeeklyThemes } from '../services/llm/generateThemes';
 import { writeNotionWeeklyPage } from '../services/notion/writeWeeklyPage';
 import { clusterToTopics } from '../services/trends/cluster';
 import { dedupe } from '../services/trends/normalize';
+// import { GoogleTrendsProviderFromEnv } from '../services/trends/sources/googleTrends';
 import { DummyGoogleTrendsProvider } from '../services/trends/sources/googleTrends';
 import { fetchHackerNewsTop } from '../services/trends/sources/hackernews';
 import { fetchRss } from '../services/trends/sources/rss';
@@ -35,6 +36,7 @@ export async function runWeekly() {
   logger.info('Fetched RSS feeds', { aiNews: aiNews.length, seoNews: seoNews.length });
 
   logger.info('Fetching Google Trends');
+  // const googleTrends = await GoogleTrendsProviderFromEnv.fetchDailyTrends('US');
   const googleTrends = await DummyGoogleTrendsProvider.fetchDailyTrends('US');
   logger.info('Fetched Google Trends', { count: googleTrends.length });
 

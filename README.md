@@ -63,6 +63,10 @@ It’s a trend-aware, pillar-aligned content engine.
         OPENAI_MODEL=gpt-4.1
         NOTION_API_KEY=secret_...
         NOTION_DATABASE_ID=xxxxxx
+        GOOGLE_TRENDS_PROVIDER=dataforseo
+        DATAFORSEO_LOGIN=your_dataforseo_login
+        DATAFORSEO_PASSWORD=your_dataforseo_password
+        DATAFORSEO_TRENDS_SEED_KEYWORDS=technology,ai,next.js
     ```
     You can copy from: `.env.example`
 4. Run Locally:
@@ -84,6 +88,10 @@ Set repository secrets:
  - OPENAI_MODEL
  - NOTION_API_KEY
  - NOTION_DATABASE_ID
+ - GOOGLE_TRENDS_PROVIDER
+ - DATAFORSEO_LOGIN
+ - DATAFORSEO_PASSWORD
+ - DATAFORSEO_TRENDS_SEED_KEYWORDS
 
 Workflow file:
 `.github/workflows/weekly.yml`
@@ -112,6 +120,12 @@ Each pillar has:
 
 
 # 🧮 Ranking Logic
+
+# Google Trends Provider Notes
+- The current implementation supports `GOOGLE_TRENDS_PROVIDER=dataforseo`.
+- It calls DataForSEO `keywords_data/google_trends/explore/live`.
+- DataForSEO Explore is keyword-driven, so `DATAFORSEO_TRENDS_SEED_KEYWORDS` controls the discovery surface.
+- Set `GOOGLE_TRENDS_PROVIDER=dummy` if you want to bypass external calls.
 
 ## Each topic receives a score based on:
 
